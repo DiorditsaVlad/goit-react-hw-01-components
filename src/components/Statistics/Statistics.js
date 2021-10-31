@@ -1,4 +1,6 @@
 import s from './Statistics.module.css';
+import PropTypes from 'prop-types';
+import getRandomRGB from '../../getRandomRGB';
 export default function Statistics({ title, stats }) {
   return (
     <section className={s.container}>
@@ -18,8 +20,13 @@ export default function Statistics({ title, stats }) {
     </section>
   );
 }
-function getRandomRGB() {
-  return `rgb(${Math.floor(Math.random() * 235)}, ${Math.floor(
-    Math.random() * 235,
-  )}, ${Math.floor(Math.random() * 235)})`;
-}
+Statistics.propTypes = {
+  title: PropTypes.string,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
+};
