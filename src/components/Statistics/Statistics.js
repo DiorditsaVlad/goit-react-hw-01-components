@@ -1,11 +1,12 @@
 import s from './Statistics.module.css';
 import PropTypes from 'prop-types';
 import getRandomRGB from '../../getRandomRGB';
+import { StyledList } from './Statistics.styled';
 export default function Statistics({ title, stats }) {
   return (
     <section className={s.container}>
       {title && <h2 className={s.title}>{title}</h2>}
-      <ul className={s.list}>
+      <StyledList>
         {stats.map(item => (
           <li
             key={item.id}
@@ -16,7 +17,7 @@ export default function Statistics({ title, stats }) {
             <span className={s.percentage}>{item.percentage}</span>
           </li>
         ))}
-      </ul>
+      </StyledList>
     </section>
   );
 }
